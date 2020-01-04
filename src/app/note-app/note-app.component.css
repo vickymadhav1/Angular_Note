@@ -1,0 +1,90 @@
+.getingdata {
+  background-color: #f8ecbd;
+  padding: 7px;
+}
+nav.navbar.navbar-default {
+  margin-bottom: 0;
+}
+.my_unorder {
+  padding: 10px;
+}
+.items {
+  background: red;
+  border-radius: 50px;
+  width: 0;
+  height: 0;
+}
+.data_item {
+  background: #fac654;
+  border-radius: 50px;
+  width: 0;
+  height: 0;
+}
+.data {
+  background: #44cd5c;
+  border-radius: 50px;
+  width: 0;
+  height: 0;
+}
+.second {
+  padding-right: 30px;
+  padding-left: 50px;
+}
+i.fa.fa-trash {
+  font-size: 25px;
+}
+i.fa.fa-edit {
+  font-size: 25px;
+}
+i.fa.fa-lock {
+  font-size: 25px;
+}
+.list {
+  background: white;
+  border-radius: 10px;
+  width: 80px;
+  text-align: center;
+  height: 60px;
+  align-items: center;
+}
+button {
+  background: #f8f9fa;
+  border: navajowhite;
+}
+li {
+  background-color: #f8f9fa;
+  padding-right: 20px;
+}
+form {
+  margin: auto;
+}
+.card {
+  border-radius: 0 !important;
+  padding-top: 7px;
+  overflow-y: scroll;
+  height: 300px;
+}
+.card_text {
+  background: #f8ecbd;
+  border-bottom: 2px solid grey;
+  padding: 10px;
+}
+.card-body {
+  padding: 0px;
+}
+.icons {
+  background-color: #f8ecbd;
+}
+i.fa.fa-pencil {
+  font-size: 23px;
+}
+.card-text {
+  background: #f8ecbd;
+  border-bottom: 2px solid grey;
+}
+.d-flex {
+  justify-content: space-between;
+}
+textarea#comment {
+  border-radius: 0;
+}

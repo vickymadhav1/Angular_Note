@@ -1,0 +1,112 @@
+<div class="mynot">
+    <div class="container">
+        <div class="header">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav second  bg-light">
+                        <li>
+                            <a class="list">
+                                <button type="submit">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list">
+                                <button type="submit">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </a>
+                        </li>
+                        <li>
+                            <form [formGroup]="noteForm" (ngSubmit)="onSubmit(noteForm.value)">
+                                <button type="submit" class="form__submit" [disabled]="!noteForm.valid">
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                        </li>
+                        <li>
+                            <a class="list">
+                                <button type="submit">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list">
+                                <button type="submit">
+                                    <i class="fa fa-lock" aria-hidden="true"></i>
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0" [formGroup]='noteForm' novalidate>
+                        <input class="form-control mr-sm-2" type="search" formControlName='search'
+                            [(ngModel)]="searchText" placeholder="Search" aria-label="Search">
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="preview">
+                        <div class="card-body">
+                            <div class="card-text">
+                                <h4 class="preview__content" [innerHTML]="previewContent"></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card_text {{note.editing ? 'edit' : ''}}"
+                            *ngFor="let note of notes | filter : searchText">
+                            <div class="item{{note.editing ? '--editmode' : ''}}" id="item--{{note.id}}">
+                                <div *ngIf="!note.editing">
+                                    <h5 [innerHTML]=parseMarkdown(note.content)></h5>
+                                    <h5 [innerHTML]=parseMarkdown(note.time)></h5>
+
+                                    <div class="align d-flex">
+                                        <button class="icons" (click)="editNote(note)"><i class="fa fa-pencil"
+                                                aria-hidden="true"></i></button>
+
+                                        <button class="icons" (click)="openDeleteModal(note)"
+                                            (click)="removeNote(noteToDelete)"><i class="fa fa-trash"
+                                                aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                                <form *ngIf="note.editing" class="item__form form" [formGroup]="editNoteForm"
+                                    (ngSubmit)="onEditSubmit(note, editNoteForm.value)">
+                                    <div class="form__group">
+                                        <textarea class="form-control" rows="5" id="comment" name="text"
+                                            [formControl]="editNoteForm.controls['content']"
+                                            value="{{note.content}}"></textarea>
+                                    </div>
+                                    <button type="submit" class="form__submit btn uk-button-success"
+                                        [disabled]="!editNoteForm.valid">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <form class="form" [formGroup]="noteForm" (ngSubmit)="onSubmit(noteForm.value)">
+                    <p></p>
+                    <p></p>
+                    <div class="form__group">
+                        <textarea class="form-control" rows="5" id="comment" name="text"
+                            [formControl]="noteForm.controls['content']"></textarea>
+                        {{today | date:'fullDate'}}{{today | date:'h:mm a'}}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+</div>
